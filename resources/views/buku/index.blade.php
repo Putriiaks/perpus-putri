@@ -8,8 +8,6 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-           
-            </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
         @if (session()->has('success'))
@@ -17,46 +15,43 @@
           {{ session('success') }}
         </div>
         @endif
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
- <div class="container-fluid">
-  <div class="card">
-  </div>
-</div>
+      </div> 
 
 <div class="card">
   <div class="card-header">
     Data buku <br>
-    <a href="{{ url('buku/create') }}" class="btn btn-primary btn-sm">Tambah buku</a>
+    <a href="{{ url('/buku/create') }}" class="btn btn-primary btn-sm">Tambah buku</a>
   </div>
   <div class="card-body">
-    <table class="table table-striped-columns">
-    
-     <thead>
-                                        <tr>
-                                            <th>nama</th>
-                                            <th>id penulis</th>
-                                            <th>tahun terbit</th>
-                                             <th>id penerbit</th>
-                                            <th>id kategori</th>
-                                            <th>sinopsis</th>
-                                            <th>sampul</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    @foreach($buku as $b)
-                                    <tbody>
-                                        <tr>
-                                            <td>{{ $b->nama}}</td>
-                                            <td>{{ $b->id_penulis}}</td>
-                                            <td>{{ $b->tahun_terbit}}</td>
-                                            <td>{{ $b->id_penerbit}}</td>
-                                            <td>{{ $b->id_kategori}}</td>
-                                            <td>{{ $b->sinopsis}}</td>
-                                            <td>{{ $b->sampul}}</td>
-                                             </tr>
-                                            <td>
+    <table class="table table-striped-columns">  
+            <thead>
+                <tr>
+                <th>Id</th>
+                <th>Nama Buku</th>
+                <th>Id penulis</th>
+                <th>Tahun terbit</th>
+                <th>Id penerbit</th>
+                <th>Id kategori</th>
+                <th>Sinopsis</th>
+                <th>Sampul</th>
+                <th>Aksi</th>      
+                </tr>
+                </thead>
+                @foreach($buku as $b)
+                <tbody>
+                <tr>
+                <td>{{ $b->id}}</td>
+                <td>{{ $b->nama}}</td>
+                <td>{{ $b->id_penulis}}</td>
+                <td>{{ $b->tahun_terbit}}</td>
+                <td>{{ $b->id_penerbit}}</td>
+                <td>{{ $b->id_kategori}}</td>
+                <td>{{ $b->sinopsis}}</td>
+                <td>{{ $b->sampul}}</td>
+                <td>
+                <a href="/buku/{{ $b->id }}/edit" class="badge bg-warning">
+                <i class="fas fa fa-edit text-white"></i>
+                </a>
           <form action="/buku/delete/{{ $b->id }}" method="get" class="d-inline">
             @method('delete')
             @csrf

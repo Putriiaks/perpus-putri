@@ -1,65 +1,114 @@
-@extends('layouts.main')
+@extends('layouts.mainadmin')
+
 @section('content')
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Create</a></li>
+              <li class="breadcrumb-item active">Tambah Buku</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+      <div class="container-fluid">
+        <div class="card">
+  <div class="card-header">
+    Tambah Buku
+  </div>
+  <div class="card-body">
+                <a href="{{ url('/buku') }}" class="btn btn-info btn-sm">Kembali</a>
+                <form action="{{ url('/buku/tambah') }}" method="post">
+                  @csrf
+                  <div class="form-group">
+                  <label for="id">Id</label>
+                  <input type="text" class="form-control form-control-border" id="id" placeholder="id" name="id" value="{{ old('id') }}">
+                  @error('id')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
 
-<div class="card shadow mb-4">
-<div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Data Siswa</h6> <br>
-    <a href="/" class="btn btn-primary btn-sm">Kembali ke Data Siswa</a>
-        </div>
-        <div class="card-body">
-            <form action="/siswa/{{ $siswa->id }}" method="post">
-                @method('put')
-                @csrf
-                <div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                <label for="nis" class="form-label">Nomor Induk Siswa</label>
-                <input type="text" class="form-control" id="nis" name="nis" value="{{ $siswa->nis }}">
-            </div>
-
-        </div>
-        <div class="col-lg-6">
-           <div class="mb-3">
-              <label for="nama" class="form-label">Nama Siswa</label>
-              <input type="text" class="form-control" id="nama" name="nama" value="{{ $siswa->nama }}">
-            </div>
-      </div>
+                  <div class="form-group">
+                  <label for="namabuku">Nama Buku</label>
+                  <input type="text" class="form-control form-control-border" id="namabuku" placeholder="Nama Buku" name="nama" value="{{ old('nama') }}">
+                  @error('nama')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="id_penulis">Id Penulis</label>
+                  <input type="text" class="form-control form-control-border" id="id_penulis" placeholder="Id Penulis" name="id" value="{{ old('id') }}">
+                  @error('id_penulis')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="tahun_terbit">Tahun Terbit</label>
+                  <input type="text" class="form-control form-control-border" id="tahun_terbit" placeholder="Tahun Terbit" name="tahun" value="{{ old('tahun') }}">
+                  @error('tahun_terbit')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="id_penerbit">Id Penerbit</label>
+                  <input type="text" class="form-control form-control-border" id="id_penerbit" placeholder="Id Penerbit" name="id" value="{{ old('id') }}">
+                  @error('id_penerbit')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="id_kategori">Id Kategori</label>
+                  <input type="text" class="form-control form-control-border" id="id_kategori" placeholder="Tahun Terbit" name="tahun" value="{{ old('tahun') }}">
+                  @error('id_kategori')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="sinopsis">Sinopsis</label>
+                  <input type="text" class="form-control form-control-border" id="sinopsis" placeholder="Sinopsis" name="sinopsis" value="{{ old('sinopsis') }}">
+                  @error('sinopsis')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                  <div class="form-group">
+                  <label for="sampul">Sampul</label>
+                  <input type="text" class="form-control form-control-border" id="sampul" placeholder="Sampul" name="sampul" value="{{ old('sampul') }}">
+                  @error('sampul')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
+                </div>
+                </form>
+                </div>
+              <!-- /.card-body -->
+    </div>
+  </div>
 </div>
 
-<div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                <label for="kelas" class="form-label">Kelas</label>
-                <input type="text" class="form-control" id="kelas" name="kelas" value="{{ $siswa->kelas }}">
-            </div>
-
-        </div>
-        <div class="col-lg-6">
-           <div class="mb-3">
-              <label for="jk" class="form-label">Jenis Kelamin Siswa</label>
-              <input type="text" class="form-control" id="jk" name="jk" value="{{ $siswa->jk }}">
-            </div>
-      </div>
-</div>
-
-<div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                <label for="asal_sekolah" class="form-label">Asal Sekolah</label>
-                <input type="text" class="form-control" id="asal_sekolah" name="asal_sekolah" value="{{ $siswa->asal_sekolah }}">
-            </div>
-
-        </div>
-        <div class="col-lg-6">
-           <div class="mb-3">
-            <label for="alamat" class="form-label">Alamat Siswa</label>
-            <textarea class="form-control" id="alamat" name="alamat" rows="3">{{ $siswa->alamat }}</textarea>
-           </div>
-      </div>
-      <button type="submit" class="btn btn-outline-primary btn-sm">Rubah Data</button>
-</div>
-</form>
-</div>
-</div>
-
-@endsection
+@endsections

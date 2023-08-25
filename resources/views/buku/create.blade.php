@@ -1,63 +1,94 @@
-@extends('layouts.main')
+@extends('layouts.mainadmin')
+
 @section('content')
 
-<div class="card shadow mb-4">
-<div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Data Buku</h6>
-     </div>
-        <div class="card-body">
-            <form action="/buku/tambah" method="post">
-                @csrf
-                <div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                <label for="" class="form-label">Nomor Induk Siswa</label>
-                <input type="text" class="form-control" id="nis" name="nis" placeholder="Nomor Induk Siswa">
-            </div>
+<div class="content-wrapper">
+   
+  <div class="card-body">
+                <a href="{{ url('/buku') }}" class="btn btn-info btn-sm">Kembali</a>
+                <form action="{{ url('/buku/tambah') }}" method="post">
+                  @csrf
+                  <div class="form-group">
+                  <label for="id">Id</label>
+                  <input type="text" class="form-control form-control-border" id="id" placeholder="id" name="id" value="{{ old('id') }}">
+                  @error('id')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
 
-        </div>
-        <div class="col-lg-6">
-           <div class="mb-3">
-              <label for="nama" class="form-label">Nama Siswa</label>
-              <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Siswa">
-            </div>
-      </div>
-</div>
-
-<div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                <label for="kelas" class="form-label">Kelas</label>
-                <input type="text" class="form-control" id="kelas" name="kelas" placeholder="Kelas">
-            </div>
-
-        </div>
-        <div class="col-lg-6">
-           <div class="mb-3">
-              <label for="jk" class="form-label">Jenis Kelamin Siswa</label>
-              <input type="text" class="form-control" id="jk" name="jk" placeholder="Jenis Kelamin Siswa">
-            </div>
-      </div>
-</div>
-
-<div class="row">
-                <div class="col-lg-6">
-                    <div class="mb-3">
-                <label for="asal_sekolah" class="form-label">Asal Sekolah</label>
-                <input type="text" class="form-control" id="asal_sekolah" name="asal_sekolah" placeholder="Asal Sekolah">
-            </div>
-
-        </div>
-        <div class="col-lg-6">
-           <div class="mb-3">
-            <label for="alamat" class="form-label">Alamat Siswa</label>
-            <textarea class="form-control" id="alamat" name="alamat" rows="3"></textarea>
-           </div>
-      </div>
-      <button type="submit" class="btn btn-outline-primary btn-sm">Tambah Data</button>
-</div>
-</form>
-</div>
+                  <div class="form-group">
+                  <label for="namabuku">Nama Buku</label>
+                  <input type="text" class="form-control form-control-border" id="namabuku" placeholder="Nama Buku" name="nama" value="{{ old('nama') }}">
+                  @error('nama')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="id_penulis">Id Penulis</label>
+                  <input type="text" class="form-control form-control-border" id="id_penulis" placeholder="Id Penulis" name="id" value="{{ old('id') }}">
+                  @error('id_penulis')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="tahun_terbit">Tahun Terbit</label>
+                  <input type="text" class="form-control form-control-border" id="tahun_terbit" placeholder="Tahun Terbit" name="tahun" value="{{ old('tahun') }}">
+                  @error('tahun_terbit')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="id_penerbit">Id Penerbit</label>
+                  <input type="text" class="form-control form-control-border" id="id_penerbit" placeholder="Id Penerbit" name="id" value="{{ old('id') }}">
+                  @error('id_penerbit')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="id_kategori">Id Kategori</label>
+                  <input type="text" class="form-control form-control-border" id="id_kategori" placeholder="Id Kategori" name="id" value="{{ old('id') }}">
+                  @error('id_kategori')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <label for="sinopsis">Sinopsis</label>
+                  <input type="text" class="form-control form-control-border" id="sinopsis" placeholder="Sinopsis" name="sinopsis" value="{{ old('sinopsis') }}">
+                  @error('sinopsis')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                  <div class="form-group">
+                  <label for="sampul">Sampul</label>
+                  <input type="text" class="form-control form-control-border" id="sampul" placeholder="Sampul" name="sampul" value="{{ old('sampul') }}">
+                  @error('sampul')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
+                </div>
+                </form>
+                </div>
+              <!-- /.card-body -->
+    </div>
+  </div>
 </div>
 
 @endsection
