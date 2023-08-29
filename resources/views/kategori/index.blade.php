@@ -13,40 +13,28 @@
 
     <div class="card mt-4">
       <div class="card-header">
-        Data buku <br>
-        <a href="{{ url('/buku/create') }}" class="btn btn-primary btn-sm">Tambah buku</a>
+        Data kategori <br>
+        <a href="{{ url('/kategori/create') }}" class="btn btn-primary btn-sm">Tambah kategori</a>
       </div>
       <div class="card-body">
         <table class="table table-striped-columns">  
           <thead>
             <tr>
               <th>Id</th>
-              <th>Nama Buku</th>
-              <th>Id penulis</th>
-              <th>Tahun terbit</th>
-              <th>Id penerbit</th>
-              <th>Id kategori</th>
-              <th>Sinopsis</th>
-              <th>Sampul</th>
+              <th>Nama kategori</th>
               <th>Aksi</th>      
             </tr>
           </thead>
-          @foreach($buku as $b)
+          @foreach($kategori as $k)
           <tbody>
             <tr>
-              <td>{{ $b->id}}</td>
-              <td>{{ $b->nama}}</td>
-              <td>{{ $b->id_penulis}}</td>
-              <td>{{ $b->tahun_terbit}}</td>
-              <td>{{ $b->id_penerbit}}</td>
-              <td>{{ $b->id_kategori}}</td>
-              <td>{{ $b->sinopsis}}</td>
-              <td>{{ $b->sampul}}</td>
+              <td>{{ $k->id}}</td>
+              <td>{{ $k->nama}}</td>
               <td>
-                <a href="{{ route('buku.edit',$b->id) }}" class="badge bg-warning">
+                <a href="{{ route('kategori.edit',$k->id) }}" class="badge bg-warning">
                   <i class="fas fa fa-edit text-white"></i>
                 </a>
-                <form action="{{ route('buku.destroy',$b->id) }}" method="post" class="d-inline">
+                <form action="{{ route('kategori.destroy',$k->id) }}" method="post" class="d-inline">
                   @method('delete')
                   @csrf
                   <button class="badge bg-danger border-0" onclick="return confirm('Are you sure?')">

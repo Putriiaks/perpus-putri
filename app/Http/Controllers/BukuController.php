@@ -13,9 +13,9 @@ class BukuController extends Controller
     public function index()
     {
         return view('buku.index', [
-        'title' => 'Buku',
-        'buku' => Buku::all(),
-    ]);
+            'title' => 'Buku',
+            'buku' => Buku::all(),
+        ]);
     }
 
     /**
@@ -23,9 +23,9 @@ class BukuController extends Controller
      */
     public function create()
     {
-          return view('buku.create', [
-        'title' => 'Tambah Buku',
-    ]);
+        return view('buku.create', [
+            'title' => 'Tambah buku',
+        ]);
     }
 
     /**
@@ -33,7 +33,7 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-         $validateData = $request->validate([
+        $validateData = $request->validate([
             'id' => 'required',
             'nama' => 'required',
             'id_penulis' => 'required',
@@ -47,6 +47,7 @@ class BukuController extends Controller
         Buku::create($validateData);
 
         return redirect('/buku')->with('success', 'Berhasil menambahkan buku!');
+        
     }
 
     /**
@@ -62,10 +63,10 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-         return view('buku.edit', [
-        'title' => 'Edit',
-        'buku' => $buku,
-    ]);
+        return view('buku.edit', [
+            'title' => 'Edit',
+            'buku' => $buku,
+        ]);
     }
 
     /**
@@ -74,7 +75,6 @@ class BukuController extends Controller
     public function update(Request $request, Buku $buku)
     {
         $rules = [
-            'id' => 'required',
             'nama' => 'required',
             'id_penulis' => 'required',
             'tahun_terbit' => 'required',

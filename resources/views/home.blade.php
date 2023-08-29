@@ -29,10 +29,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -50,8 +46,11 @@
         </div>
     </div>
 </body>
-        
 
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+     
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -658,9 +657,8 @@
                     @yield('content')
                 </div>
             </div>
-        <!-- /.content-wrapper -->
         
-
+        
 
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
