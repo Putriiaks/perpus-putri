@@ -12,7 +12,7 @@ class BukuController extends Controller
      */
     public function index()
     {
-        return view('buku.index', [
+        return view('pages.admin.buku.index', [
             'title' => 'Buku',
             'buku' => Buku::all(),
         ]);
@@ -23,7 +23,7 @@ class BukuController extends Controller
      */
     public function create()
     {
-        return view('buku.create', [
+        return view('pages.admin.buku.create', [
             'title' => 'Tambah buku',
         ]);
     }
@@ -63,7 +63,7 @@ class BukuController extends Controller
      */
     public function edit(Buku $buku)
     {
-        return view('buku.edit', [
+        return view('pages.admin.buku.edit', [
             'title' => 'Edit',
             'buku' => $buku,
         ]);
