@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class BukuController extends Controller
 {
@@ -33,8 +34,7 @@ class BukuController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'id' => 'required',
+        $request->validate([
             'nama' => 'required',
             'id_penulis' => 'required',
             'tahun_terbit' => 'required',
@@ -44,10 +44,18 @@ class BukuController extends Controller
             'sampul' => 'required',
         ]);
 
-        Buku::create($validateData);
+        Buku::create([
+            'nama' => $request->nama,
+            'tahun_terbit' => $request->tahun_terbit,
+            'id_penulis' => $request->id_penulis,
+            'id_penerbit' => $request->id_penerbit,
+            'id_kategori' => $request->id_kategori,
+            'sinopsis' => $request->sinopsis,
+            'sampul' => $request->sampul,
 
-        return redirect('/buku')->with('success', 'Berhasil menambahkan buku!');
-        
+        ]);
+
+        return Redirect::route('buku_index');
     }
 
     /**
@@ -61,20 +69,21 @@ class BukuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Buku $buku)
+    public function edit($id)
     {
+        $item = Buku::findOrFail($id);
+
         return view('pages.admin.buku.edit', [
-            'title' => 'Edit',
-            'buku' => $buku,
+            'item' => $item
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Buku $buku)
+    public function update(Buku $buku, Request $request)
     {
-        $rules = [
+        $request->validate([
             'nama' => 'required',
             'id_penulis' => 'required',
             'tahun_terbit' => 'required',
@@ -82,13 +91,19 @@ class BukuController extends Controller
             'id_kategori' => 'required',
             'sinopsis' => 'required',
             'sampul' => 'required',
-        ];
+        ]);
 
-        $validateData = $request->validate($rules);
+        $buku->update([
+            'nama' => $request->nama,
+            'tahun_terbit' => $request->tahun_terbit,
+            'id_penulis' => $request->id_penulis,
+            'id_penerbit' => $request->id_penerbit,
+            'id_kategori' => $request->id_kategori,
+            'sinopsis' => $request->sinopsis,
+            'sampul' => $request->sampul,
+        ]);
 
-        Buku::where('id', $buku->id)->update($validateData);
-
-        return redirect('/buku')->with('success', 'Berhasil merubah data buku!');
+        return redirect()->route('buku_index');
     }
 
     /**
@@ -98,6 +113,6 @@ class BukuController extends Controller
     {
         Buku::destroy($buku->id);
 
-        return redirect('/buku')->with('success', 'Berhasil menghapus data buku!');
+        return redirect('/buku');
     }
 }
