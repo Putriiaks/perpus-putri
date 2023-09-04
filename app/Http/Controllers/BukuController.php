@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buku;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -26,6 +27,7 @@ class BukuController extends Controller
     {
         return view('pages.admin.buku.create', [
             'title' => 'Tambah buku',
+            'kategori' => Kategori::all(),
         ]);
     }
 
@@ -63,7 +65,10 @@ class BukuController extends Controller
      */
     public function show(Buku $buku)
     {
-        //
+        return view('pages.admin.buku.show', [
+            'title' => 'Show',
+            'buku' => $buku,
+        ]);
     }
 
     /**

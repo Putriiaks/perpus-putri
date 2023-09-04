@@ -52,12 +52,14 @@
                         <td style="text-align:center" style="text-align:center">{{ $b->id_penulis }}</td>
                         <td style="text-align:center">{{ $b->tahun_terbit }}</td>
                         <td style="text-align:center">{{ $b->id_penerbit }}</td>
-                        <td style="text-align:center">{{ $b->id_kategori }}</td>
+                        <td style="text-align:center">{{ $b->kategori->nama }}</td>
                         <td style="text-align:center">{{ $b->sinopsis }}</td>
                         <td style="text-align:center">{{ $b->sampul }}</td>
                         <td style="text-align:center">
 
-                            <a class="btn btn-info" href="">Show</a>
+                            <a href="{{ route('buku_edit', $b->id) }}" class="btn btn-info">
+                                <i class="fa-regular fa-eye"></i>
+                            </a>
 
                             <a href="{{ route('buku_edit', $b->id) }}" class="btn btn-warning">
                                 <i class="fas fa-fw fa-pencil"></i>
@@ -66,7 +68,7 @@
                             <form action="{{ route('buku_destroy', $b->id) }}" method="post" class="d-inline">
                                 @csrf
                             <button type="submit" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');" class="btn btn-danger">Delete</button>
-                        </form>
+                            </form>
                         </td>
                     </tr>
                 </tbody>

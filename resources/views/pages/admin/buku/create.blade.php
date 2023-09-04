@@ -33,7 +33,12 @@
               </div>
               <div class="form-group">
                 <label for="id_kategori">Kategori</label>
-                <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="Enter kategori">
+                <select class="form-control" id="id_kategori" name="id_kategori">
+                <option selected>Pilih Kategori</option>
+                @foreach($kategori as $k)
+                <option value="{{ $k->id }}">{{ $k->kategori }}</option>
+                @endforeach
+            </select>
               </div>
               <div class="form-group">
                 <label for="sinopsis">Sinopsis</label>
