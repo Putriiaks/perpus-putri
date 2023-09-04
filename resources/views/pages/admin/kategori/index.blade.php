@@ -35,7 +35,6 @@
                     <tr>
                         <th style="text-align:center;">No</th>
                         <th style="text-align:center;">Nama</th>
-                        <th style="text-align:center;">Kategori</th>
                         <th width="250px" style="text-align: center;">Action</th>
                     </tr>
                 </thead>
@@ -44,7 +43,6 @@
                     <tr>
                         <td style="text-align:center">{{ $loop->iteration }}</td>
                         <td style="text-align:center">{{ $k->nama }}</td>
-                        <td style="text-align:center">{{ $k->kategori }}</td>
                         <td style="text-align:center">
                             <for action="" method="POST">
 

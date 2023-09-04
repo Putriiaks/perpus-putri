@@ -33,7 +33,12 @@
               </div>
               <div class="form-group">
                 <label for="id_kategori">Kategori</label>
-                <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="Enter kategori" value="{{ $item->id_kategori }}">
+                <select class="form-control" id="id_kategori" name="id_kategori" class="form-control">
+                <option value="">Pilih Kategori</option>
+                @foreach($kategoris as $kategori)
+                <option value="{{ $kategori->id }}" {{ $kategori->id == $item->id_kategori ? 'selected' : '' }}>{{ $kategori->nama }}</option>
+                @endforeach
+            </select>
               </div>
               <div class="form-group">
                 <label for="sinopsis">Sinopsis</label>

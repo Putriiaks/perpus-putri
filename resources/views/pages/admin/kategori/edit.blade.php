@@ -19,10 +19,7 @@
                 <label for="nama">Nama</label>
                 <input type="text" class="form-control" id="nama" name="nama" placeholder="Enter nama" value="{{ $item->nama }}">
               </div>
-              <div class="form-group">
-                <label for="kategori">Kategori</label>
-                <input type="text" class="form-control" id="kategori" name="kategori" placeholder="Enter kategori" value="{{ $item->kategori }}">
-              </div>
+              
           </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-primary">Submit</button>

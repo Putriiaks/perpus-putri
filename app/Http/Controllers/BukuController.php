@@ -43,8 +43,12 @@ class BukuController extends Controller
             'id_penerbit' => 'required',
             'id_kategori' => 'required',
             'sinopsis' => 'required',
-            'sampul' => 'required',
+            'sampul' => 'image|file',
         ]);
+
+        if($request->file('sampul')){
+            $validateData['sampul'] = $request->file('sampul')->store('buku-img');
+        }
 
         Buku::create([
             'nama' => $request->nama,
@@ -77,9 +81,11 @@ class BukuController extends Controller
     public function edit($id)
     {
         $item = Buku::findOrFail($id);
+        $kategoris = Kategori::all();
 
         return view('pages.admin.buku.edit', [
-            'item' => $item
+            'item' => $item,
+            'kategoris' => $kategoris,
         ]);
     }
 
