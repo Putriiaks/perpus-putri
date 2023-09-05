@@ -46,7 +46,7 @@
               </div>
               <div class="form-group">
                 <label for="sampul">Sampul</label>
-                <input type="text" class="form-control" id="sampul" name="sampul" placeholder="Enter sampul" value="{{ $item->sampul }}">
+                <input type="file" class="form-control" id="sampul" name="sampul" placeholder="Enter sampul" value="{{ $item->sampul }}">
               </div>
           </div>
           <div class="card-footer">

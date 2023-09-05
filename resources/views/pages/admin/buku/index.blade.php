@@ -54,12 +54,11 @@
                         <td style="text-align:center">{{ $b->id_penerbit }}</td>
                         <td style="text-align:center">{{ $b->kategori->nama }}</td>
                         <td style="text-align:center">{{ $b->sinopsis }}</td>
-                        <td style="text-align:center">{{ $b->sampul }}
-                        <img src="{{ asset('storage/'.$b->sampul) }}" class="img-fluid mt-3">
+                        <td style="text-align:center"><img src="/image/{{ $b->image }}" width="100px">
                         </td>
                         <td style="text-align:center">
                                 
-                            <a href="{{ route('buku_edit', $b->id) }}" class="btn btn-info">
+                            <a href="{{ route('buku_show', $b->id) }}" class="btn btn-info">
                                 <i class="fa-regular fa-eye"></i>
                             </a>
 
