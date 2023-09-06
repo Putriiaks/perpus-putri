@@ -6,6 +6,8 @@ use App\Models\Buku;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
+
 
 class BukuController extends Controller
 {
@@ -46,9 +48,10 @@ class BukuController extends Controller
             'sampul' => 'image|file',
         ]);
 
-        if($request->file('sampul')){
-            $validateData['sampul'] = $request->file('sampul')->store('buku-img');
-        }
+       $file = $request->file('sampul');
+        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
+
+        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
         Buku::create([
             'nama' => $request->nama,
@@ -57,11 +60,10 @@ class BukuController extends Controller
             'id_penerbit' => $request->id_penerbit,
             'id_kategori' => $request->id_kategori,
             'sinopsis' => $request->sinopsis,
-            'sampul' => $request->sampul,
+            'sampul' => $path
 
         ]);
-
-        return Redirect::route('buku_index');
+        return Redirect::route('buku_index')->with('toast_success', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -105,6 +107,11 @@ class BukuController extends Controller
             'sampul' => 'required',
         ]);
 
+        $file = $request->file('sampul');
+        $path = time() . '_' . $request->name . '.' . $file->getClientOriginalExtension();
+
+        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+
         $buku->update([
             'nama' => $request->nama,
             'tahun_terbit' => $request->tahun_terbit,
@@ -112,10 +119,10 @@ class BukuController extends Controller
             'id_penerbit' => $request->id_penerbit,
             'id_kategori' => $request->id_kategori,
             'sinopsis' => $request->sinopsis,
-            'sampul' => $request->sampul,
+            'sampul' => $path
         ]);
 
-        return redirect()->route('buku_index');
+        return redirect()->route('buku_index')->with('toast_success', 'Data Berhasil Dirubah!');
     }
 
     /**
@@ -125,6 +132,6 @@ class BukuController extends Controller
     {
         Buku::destroy($buku->id);
 
-        return redirect('/buku');
+        return redirect('/buku')->with('toast_success', 'Data Berhasil Dihapus!');
     }
 }

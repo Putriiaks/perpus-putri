@@ -45,7 +45,7 @@ class KategoriController extends Controller
 
         ]);
 
-        return Redirect::route('kategori_index');
+        return Redirect::route('kategori_index')->with('toast_success', 'Data Berhasil Ditambahkan!');
     }
 
     /**
@@ -75,18 +75,17 @@ class KategoriController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'kategori' => 'required',
-             
+           
         ]);
 
         $kategori->update([
             'nama' => $request->nama,
             
-            'kategori' => $request->kategori,
+
             
         ]);
 
-        return redirect()->route('kategori_index');
+        return redirect()->route('kategori_index')->with('toast_success', 'Data Berhasil Dirubah!');
     }
 
     /**
@@ -96,6 +95,6 @@ class KategoriController extends Controller
     {
         Kategori::destroy($kategori->id);
 
-        return redirect('/kategori');
+        return redirect('/kategori')->with('toast_success', 'Data Berhasil Dihapus!');
     }
 }

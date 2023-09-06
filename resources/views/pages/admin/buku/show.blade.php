@@ -51,7 +51,7 @@
             </tr>
             <tr>
                 <th style="width: 180px">Sampul</th>
-                <td><img src="/image/{{ $data->image }}" width="100px"></td>
+                <td><img src="{{ asset('storage/'.$data->sampul) }}" style="width: 150px;"></td>
             </tr>
         </table>
     </div>
