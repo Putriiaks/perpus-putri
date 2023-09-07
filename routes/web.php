@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PeminjamanController;
+
 
 
 /*
@@ -58,10 +60,21 @@ Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori_in
 Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori_create');
 Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori_store');
 
+
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori_edit');
 Route::post('/kategori/update/{kategori}', [KategoriController::class, 'update'])->name('kategori_update');
 Route::post('/kategori/destroy/{kategori}', [KategoriController::class, 'destroy'])->name('kategori_destroy');
 
+//PEMINJAMAN
+Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman_index');
+Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman_create');
+Route::post('/peminjaman/store', [PeminjamanController::class, 'store'])->name('peminjaman_store');
+Route::get('/peminjaman/show', [PeminjamanController::class, 'show'])->name('peminjaman_show');
+
+Route::get('/peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name('peminjaman_edit');
+Route::get('/peminjaman/show/{id}', [PeminjamanController::class, 'show'])->name('peminjaman_show');
+Route::post('/peminjaman/update/{peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman_update');
+Route::post('/peminjaman/destroy/{peminjaman}', [PeminjamanController::class, 'destroy'])->name('peminjaman_destroy');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
