@@ -50,6 +50,10 @@
                 <td>{{ $data->sinopsis }}</td>
             </tr>
             <tr>
+                <th style="width: 180px">Jumlah</th>
+                <td>{{ $data->jumlah }}</td>
+            </tr>
+            <tr>
                 <th style="width: 180px">Sampul</th>
                 <td><img src="{{ asset('storage/'.$data->sampul) }}" style="width: 150px;"></td>
             </tr>

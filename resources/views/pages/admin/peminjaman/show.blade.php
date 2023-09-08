@@ -34,7 +34,7 @@
                 <td>{{ $data->id_anggota }}</td>
             </tr>
             <tr>
-                <th style="width: 180px">Tanggal Pinjam</th>
+                <th style="width: 180px">Tanggal pinjam</th>
                 <td>{{ $data->tanggal_pinjam}}</td>
             </tr>
             <tr>
@@ -43,10 +43,10 @@
             </tr>
             <tr>
                 <th style="width: 180px">Denda</th>
-                <td>{{ $data->denda }}</td>
+                <td>{{ $data->denda}}</td>
             </tr>
             <tr>
-                <th style="width: 180px">Status Peminjaman</th>
+                <th style="width: 180px">Status peminjam</th>
                 <td>{{ $data->id_status_peminjaman }}</td>
             </tr>
         </table>
@@ -54,4 +54,3 @@
 </div>
 </div>
 @endsection
-

@@ -17,7 +17,12 @@
               @csrf
               <div class="form-group">
                 <label for="id_buku">Nama Buku</label>
-                <input type="text" class="form-control" id="id_buku" name="id_buku" placeholder="Enter nama buku" value="{{ $item->id_buku }}">
+                <select class="form-control" id="id_buku" name="id_buku" class="form-control">
+                  <option value="">Pilih Nama Buku</option>
+                  @foreach($buku as $b)
+                  <option value="{{ $b->id }}" {{ $b->id == $item->id_buku ? 'selected' : '' }}>{{ $b->id_buku }}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="id_anggota">Anggota</label>
@@ -25,25 +30,25 @@
               </div>
               <div class="form-group">
                 <label for="tanggal_pinjam">Tanggal Pinjam</label>
-                <input type="date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam" placeholder="Enter tanggal pinjam" value="{{ $item->tanggal_pinjam }}">
+                <input type="Date" class="form-control" id="tanggal_pinjam" name="tanggal_pinjam" placeholder="Enter tanggal pinjam" value="{{ $item->tanggal_pinjam }}">
               </div>
               <div class="form-group">
                 <label for="tanggal_kembali">Tanggal Kembali</label>
-                <input type="date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" placeholder="Enter tanggal kembali" value="{{ $item->tanggal_kembali }}">
+                <input type="Date" class="form-control" id="tanggal_kembali" name="tanggal_kembali" placeholder="Enter tanggal Kembali" value="{{ $item->tanggal_kembali }}">
               </div>
-             
               <div class="form-group">
                 <label for="denda">Denda</label>
                 <input type="text" class="form-control" id="denda" name="denda" placeholder="Enter denda" value="{{ $item->denda }}">
               </div>
               <div class="form-group">
                 <label for="id_status_peminjaman">Status Peminjaman</label>
-                <input type="text" class="form-control" id="id_status_peminjaman" name="id_status_peminjaman" placeholder="Enter status peminjaman" value="{{ $item->id_status_peminjaman }}">
+                <input type="text" class="form-control" id="id_status_peminjaman" name="id_status_peminjaman" value="{{ $item->id_status_peminjaman }}">
               </div>
-          </div>
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
+            </div>
+            <div class="card-footer">
+              <a href="{{ route('peminjaman_index') }}" class="btn btn-info">Back</a>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
           </form>
 
         </div>

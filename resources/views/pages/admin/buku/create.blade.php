@@ -17,12 +17,10 @@
               @csrf
               <div class="form-group">
                 <label for="nama">Nama</label>
-               <select class="form-control" id="nama" name="nama">
-                <option selected>Nama</option>
-                @foreach($peminjaman as $p)
-                <option value="{{ $p->id_buku }}">{{ $p->id_buku }}</option>
-                @endforeach
-              </select>
+               <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}" placeholder="Enter nama" >
+                @error('nama')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
               </div>
               <div class="form-group">
                 <label for="tahun_terbit">Tahun Terbit</label>
@@ -58,6 +56,13 @@
                 <label for="sinopsis">Sinopsis</label>
                 <input type="text" class="form-control @error('sinopsis') is-invalid @enderror" id="sinopsis" name="sinopsis" placeholder="Enter sinopsis">
                  @error('sinopsis')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="jumlah">Jumlah</label>
+                <input type="text" class="form-control @error('jumlah') is-invalid @enderror" id="jumlah" name="jumlah" placeholder="Enter jumlah">
+                 @error('jumlah')
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
               </div>

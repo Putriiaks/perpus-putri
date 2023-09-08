@@ -45,6 +45,10 @@
                 <input type="text" class="form-control" id="sinopsis" name="sinopsis" placeholder="Enter sinopsis" value="{{ $item->sinopsis }}">
               </div>
               <div class="form-group">
+                <label for="jumlah">Jumlah</label>
+                <input type="text" class="form-control" id="jumlah" name="jumlah" placeholder="Enter jumlah" value="{{ $item->jumlah }}">
+              </div>
+              <div class="form-group">
                 <label for="sampul">Sampul</label>
                 <input type="file" class="form-control" id="sampul" name="sampul" placeholder="Enter sampul" value="{{ $item->sampul }}">
               </div>

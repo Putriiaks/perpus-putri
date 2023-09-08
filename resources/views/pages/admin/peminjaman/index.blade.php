@@ -49,7 +49,7 @@
                 <tbody>
                     <tr>
                         <td style="text-align:center">{{ $loop->iteration }}</td>
-                        <td style="text-align:center">{{ $pinjam->id_buku }}</td>
+                        <td style="text-align:center">{{ @$pinjam->buku->nama }}</td>
                         <td style="text-align:center">{{ $pinjam->id_anggota }}</td>
                         <td style="text-align:center">{{ $pinjam->tanggal_pinjam }}</td>
                         <td style="text-align:center">{{ $pinjam->tanggal_kembali }}</td>

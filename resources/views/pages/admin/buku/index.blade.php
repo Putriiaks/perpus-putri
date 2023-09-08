@@ -40,6 +40,7 @@
                         <th style="text-align:center;">Penerbit</th>
                         <th style="text-align:center;">Kategori</th>
                         <th width="200px" style="text-align: center;">Sinopsis</th>
+                        <th style="text-align:center;">Jumlah</th>
                         <th style="text-align:center;">Sampul</th>
                         <th width="250px" style="text-align: center;">Action</th>
                     </tr>
@@ -48,12 +49,13 @@
                 <tbody>
                     <tr>
                         <td style="text-align:center">{{ $loop->iteration }}</td>
-                        <td style="text-align:center">{{ @$buku->peminjaman->id_buku }}</td>
+                        <td style="text-align:center">{{ $buku->nama }}</td>
                         <td style="text-align:center">{{ $buku->tahun_terbit }}</td>
                         <td style="text-align:center" style="text-align:center">{{ $buku->id_penulis }}</td>
                         <td style="text-align:center">{{ $buku->id_penerbit }}</td>
                         <td style="text-align:center">{{ @$buku->kategori->nama }}</td>
                         <td style="text-align:center">{{ $buku->sinopsis }}</td>
+                        <td style="text-align:center">{{ $buku->jumlah }}</td>
                         <td style="text-align:center"><img src="{{ asset('storage/'.$buku->sampul) }}" style="width: 150px;"></td>
                         <td style="text-align:center">
 

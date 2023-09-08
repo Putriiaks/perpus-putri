@@ -15,13 +15,16 @@
           <div class="card-body">
             <form action="{{ route('peminjaman_store') }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <div class="form-group">
+             <div class="form-group">
+             <div class="form-group">
                 <label for="id_buku">Nama Buku</label>
-                <input type="text" class="form-control @error('id_buku') is-invalid @enderror" id="nama" name="id_buku" value="{{ old('id_buku') }}" placeholder="Enter nama buku">
-                 @error('id_buku')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
-              </div>
+                <select class="form-control" id="id_buku" name="id_buku" >
+                <option selected>Nama Buku</option>
+                @foreach($buku as $b)
+                <option value="{{ $b->nama}}">{{ $b->nama}}</option>
+                @endforeach
+            </select>
+          </div>
               <div class="form-group">
                 <label for="id_anggota">Anggota</label>
                 <input type="text" class="form-control @error('id_anggota') is-invalid @enderror" id="id_anggota" name="id_anggota" value="{{ old('id_anggota') }}" placeholder="Enter anggota" >
