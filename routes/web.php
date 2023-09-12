@@ -9,6 +9,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PenulisController;
 
 
 
@@ -75,6 +76,19 @@ Route::get('/peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name
 Route::get('/peminjaman/show/{id}', [PeminjamanController::class, 'show'])->name('peminjaman_show');
 Route::post('/peminjaman/update/{peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman_update');
 Route::post('/peminjaman/destroy/{peminjaman}', [PeminjamanController::class, 'destroy'])->name('peminjaman_destroy');
+
+
+//PENULIS
+Route::get('/penulis', [PenulisController::class, 'index'])->name('penulis_index');
+Route::get('/penulis/create', [PenulisController::class, 'create'])->name('penulis_create');
+Route::post('/penulis/store', [PenulisController::class, 'store'])->name('penulis_store');
+Route::get('/penulis/show', [PenulisController::class, 'show'])->name('penulis_show');
+
+
+Route::get('/penulis/edit/{id}', [PenulisController::class, 'edit'])->name('penulis_edit');
+Route::get('/penulis/show/{id}', [PenulisController::class, 'show'])->name('penulis_show');
+Route::post('/penulis/update/{penulis}', [PenulisController::class, 'update'])->name('penulis_update');
+Route::post('/penulis/destroy/{penulis}', [PenulisController::class, 'destroy'])->name('penulis_destroy');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])

@@ -45,7 +45,7 @@
                   </li>
                   <li class="nav-item">
                     <a href="{{ url('/penerbit') }}" class="nav-link">
-                      <i class="fas fa-fw fa-user"></i>
+                      <i class="fas fa-fw fa-building"></i>
                       <p>Penerbit</p>
                   </a>
               </li>
