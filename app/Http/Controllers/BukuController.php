@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use App\Models\Kategori;
+use App\Models\Penerbit;
+use App\Models\Penulis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -30,6 +32,9 @@ class BukuController extends Controller
         return view('pages.admin.buku.create', [
             'title' => 'Tambah buku',
             'kategori' => Kategori::all(),
+            'penerbit' => Penerbit::all(),
+            'penulis' => Penulis::all(),
+
             
         ]);
     }
@@ -88,11 +93,17 @@ class BukuController extends Controller
     {
         $item = Buku::findOrFail($id);
         $kategoris = Kategori::all();
+        $penerbits = Penerbit::all();
+        $penulis = Penulis::all();
+
         
 
         return view('pages.admin.buku.edit', [
             'item' => $item,
             'kategoris' => $kategoris,
+            'penerbits' => $penerbits,
+            'penulis' => $penulis,
+
             
         ]);
     }

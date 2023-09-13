@@ -40,8 +40,6 @@
                         <th style="text-align:center;">Email</th>
                         <th style="text-align:center;">Jumlah Buku</th>
                         <th width="250px" style="text-align: center;">Action</th>
-
-                        
                     </tr>
                 </thead>
                 @foreach($penulis as $pen)

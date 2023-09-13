@@ -31,17 +31,21 @@
               </div>
               <div class="form-group">
                 <label for="id_penulis">Penulis</label>
-                <input type="text" class="form-control @error('id_penulis') is-invalid @enderror" id="id_penulis" name="id_penulis" value="{{ old('id_penulis') }}" placeholder="Enter penulis">
-                @error('id_penulis')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                 <select class="form-control" id="id_penulis" name="id_penulis">
+                <option selected>Pilih Penulis</option>
+                @foreach($penulis as $pen)
+                <option value="{{ $pen->id }}">{{ $pen->nama }}</option>
+                @endforeach
+            </select>
               </div>
               <div class="form-group">
                 <label for="id_penerbit">Penerbit</label>
-                <input type="text" class="form-control @error('id_penerbit') is-invalid @enderror" id="id_penerbit" name="id_penerbit" value="{{ old('id_penerbit') }}" placeholder="Enter penerbit">
-                @error('id_penerbit')
-                <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                <select class="form-control" id="id_penerbit" name="id_penerbit">
+                <option selected>Pilih Penerbit</option>
+                @foreach($penerbit as $p)
+                <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                @endforeach
+            </select>
               </div>
              <div class="form-group">
                 <label for="id_kategori">Kategori</label>

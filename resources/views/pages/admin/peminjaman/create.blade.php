@@ -19,9 +19,9 @@
              <div class="form-group">
                 <label for="id_buku">Nama Buku</label>
                 <select class="form-control" id="id_buku" name="id_buku" >
-                <option selected>Nama Buku</option>
-                @foreach($buku as $b)
-                <option value="{{ $b->nama}}">{{ $b->nama}}</option>
+                <option selected>Pilih Nama Buku</option>
+                @foreach($bukus as $buku)
+                <option value="{{ $buku->id }}">{{ $buku->nama}}</option>
                 @endforeach
             </select>
           </div>

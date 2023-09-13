@@ -11,7 +11,8 @@ class Peminjaman extends Model
     use HasFactory;
     protected $guarded = [];
 
-   public function buku(){
-        return $this->belongsTo(Peminjaman::class, 'id_buku');
+   public function buku()
+   {
+        return $this->belongsTo(Buku::class, 'id_buku');
     }
 }

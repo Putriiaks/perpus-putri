@@ -35,11 +35,11 @@
             </tr>
             <tr>
                 <th style="width: 180px">Penulis</th>
-                <td>{{ $data->id_penulis}}</td>
+                <td>{{ $data->penulis->nama}}</td>
             </tr>
             <tr>
                 <th style="width: 180px">Penerbit</th>
-                <td>{{ $data->id_penerbit }}</td>
+                <td>{{ $data->penerbit->nama }}</td>
             </tr>
             <tr>
                 <th style="width: 180px">Kategori</th>

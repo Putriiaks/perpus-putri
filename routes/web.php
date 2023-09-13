@@ -10,6 +10,8 @@ use App\Http\Controllers\BukuController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenulisController;
+use App\Http\Controllers\PenerbitController;
+
 
 
 
@@ -89,6 +91,19 @@ Route::get('/penulis/edit/{id}', [PenulisController::class, 'edit'])->name('penu
 Route::get('/penulis/show/{id}', [PenulisController::class, 'show'])->name('penulis_show');
 Route::post('/penulis/update/{penulis}', [PenulisController::class, 'update'])->name('penulis_update');
 Route::post('/penulis/destroy/{penulis}', [PenulisController::class, 'destroy'])->name('penulis_destroy');
+
+
+//PENULIS
+Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit_index');
+Route::get('/penerbit/create', [PenerbitController::class, 'create'])->name('penerbit_create');
+Route::post('/penerbit/store', [PenerbitController::class, 'store'])->name('penerbit_store');
+Route::get('/penerbit/show', [PenerbitController::class, 'show'])->name('penerbit_show');
+
+
+Route::get('/penerbit/edit/{id}', [PenerbitController::class, 'edit'])->name('penerbit_edit');
+Route::get('/penerbit/show/{id}', [PenerbitController::class, 'show'])->name('penerbit_show');
+Route::post('/penerbit/update/{penerbit}', [PenerbitController::class, 'update'])->name('penerbit_update');
+Route::post('/penerbit/destroy/{penerbit}', [PenerbitController::class, 'destroy'])->name('penerbit_destroy');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])

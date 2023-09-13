@@ -25,11 +25,21 @@
               </div>
               <div class="form-group">
                 <label for="id_penulis">Penulis</label>
-                <input type="text" class="form-control" id="id_penulis" name="id_penulis" placeholder="Enter penulis" value="{{ $item->id_penulis }}">
+                 <select class="form-control" id="id_penulis" name="id_penulis" class="form-control">
+                <option value="">Pilih Penulis</option>
+                @foreach($penulis as $pen)
+                <option value="{{ $pen->id }}" {{ $pen->id == $item->id_penulis ? 'selected' : '' }}>{{ $pen->nama }}</option>
+                @endforeach
+            </select>
               </div>
               <div class="form-group">
                 <label for="id_penerbit">Penerbit</label>
-                <input type="text" class="form-control" id="id_penerbit" name="id_penerbit" placeholder="Enter penerbit" value="{{ $item->id_penerbit }}">
+                 <select class="form-control" id="id_penerbit" name="id_penerbit" class="form-control">
+                <option value="">Pilih Penerbit</option>
+                @foreach($penerbits as $penerbit)
+                <option value="{{ $penerbit->id }}" {{ $penerbit->id == $item->id_penerbit ? 'selected' : '' }}>{{ $penerbit->nama }}</option>
+                @endforeach
+            </select>
               </div>
               <div class="form-group">
                 <label for="id_kategori">Kategori</label>

@@ -19,8 +19,8 @@
                 <label for="id_buku">Nama Buku</label>
                 <select class="form-control" id="id_buku" name="id_buku" class="form-control">
                   <option value="">Pilih Nama Buku</option>
-                  @foreach($buku as $b)
-                  <option value="{{ $b->id }}" {{ $b->id == $item->id_buku ? 'selected' : '' }}>{{ $b->id_buku }}</option>
+                  @foreach($bukus as $b)
+                  <option value="{{ $b->id }}" {{ $b->id == $item->id_buku ? 'selected' : '' }}>{{ $b->nama }}</option>
                   @endforeach
                 </select>
               </div>

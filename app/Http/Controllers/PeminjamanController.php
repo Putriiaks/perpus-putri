@@ -26,10 +26,10 @@ class PeminjamanController extends Controller
      */
     public function create()
     {
-        $buku = Buku::all();
+        $bukus = Buku::all();
 
         return view('pages.admin.peminjaman.create', [
-            'buku' => $buku,
+            'bukus' => $bukus,
         ]);
     }
 
@@ -81,12 +81,12 @@ class PeminjamanController extends Controller
     public function edit($id)
     {
         $item = Peminjaman::findOrFail($id);
-        $buku = Buku::all();
+        $bukus = Buku::all();
 
 
          return view('pages.admin.peminjaman.edit', [
             'item' => $item,
-            'buku' => $buku,
+            'bukus' => $bukus,
 
         ]);
     }
