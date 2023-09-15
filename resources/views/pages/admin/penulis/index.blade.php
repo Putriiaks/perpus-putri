@@ -50,7 +50,8 @@
                         <td style="text-align:center">{{ $pen->alamat }}</td>
                         <td style="text-align:center">{{ $pen->telepon }}</td>
                         <td style="text-align:center">{{ $pen->email }}</td>
-                        <td style="text-align:center">{{ $pen->jumlah }}</td>
+                        <td style="text-align:center">{{ $pen->getJumlahBuku() }}</td>
+
                         </td>
                         <td style="text-align:center">
 

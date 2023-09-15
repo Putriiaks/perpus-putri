@@ -40,6 +40,10 @@ Route::get('actionlogout', [LoginController::class, 'actionlogout'])->name('acti
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -93,7 +97,7 @@ Route::post('/penulis/update/{penulis}', [PenulisController::class, 'update'])->
 Route::post('/penulis/destroy/{penulis}', [PenulisController::class, 'destroy'])->name('penulis_destroy');
 
 
-//PENULIS
+//PENERBIT
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit_index');
 Route::get('/penerbit/create', [PenerbitController::class, 'create'])->name('penerbit_create');
 Route::post('/penerbit/store', [PenerbitController::class, 'store'])->name('penerbit_store');

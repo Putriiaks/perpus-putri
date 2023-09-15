@@ -5,7 +5,7 @@
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-            <h3>Penulis</h3>
+            <h3>Penerbit</h3>
         </div>
     </div>
 </div>
@@ -50,7 +50,8 @@
                         <td style="text-align:center">{{ $p->alamat }}</td>
                         <td style="text-align:center">{{ $p->telepon }}</td>
                         <td style="text-align:center">{{ $p->email }}</td>
-                        <td style="text-align:center">{{ $p->jumlah }}</td>
+                        <td style="text-align:center">{{ $p->getJumlahBuku() }}</td>
+
                         </td>
                         <td style="text-align:center">
 

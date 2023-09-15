@@ -11,6 +11,7 @@ use App\Models\Penulis;
 
 class Buku extends Model
 {
+
     use HasFactory;
     protected $guarded = [];
 
@@ -28,5 +29,12 @@ class Buku extends Model
     }
      public function penulis(){
         return $this->belongsTo(Penulis::class, 'id_penulis');
+    }
+
+     public function getJumlahBuku()
+    {
+        $query = Buku::query();
+
+        return $query->count();
     }
 }
