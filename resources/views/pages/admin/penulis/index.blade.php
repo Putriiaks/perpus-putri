@@ -28,6 +28,12 @@
             <a href="{{ route('penulis_create') }}" class="btn btn-primary btn-flat">
                 <i class="fa fa-plus-circle"></i> Tambah Data
             </a>
+            <a href="{{ url('export_data') }}" class="btn btn-success btn-flat">
+                <i class="fa fa-file-excel"></i> Export Excel
+            </a>
+             <a href="{{ url('export') }}" class="btn btn-danger btn-flat">
+                <i class="fa fa-file-pdf"></i> Export PDF
+            </a>
         </div>
         <div style="overflow: auto">
             <table class="table table-bordered table-condensed">

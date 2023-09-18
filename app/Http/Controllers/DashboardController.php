@@ -6,6 +6,7 @@ use App\Models\Buku;
 use App\Models\Penulis;
 use App\Models\Penerbit;
 use App\Models\Kategori;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -29,12 +30,16 @@ class DashboardController extends Controller
         $query =  Kategori::query();
         $kategori =  $query->count();
 
+        $query =  Peminjaman::query();
+        $peminjaman =  $query->count();
+
         return view('pages.admin.dashboard.dashboard', [
             'title' => 'Dashboard',
             'buku' => $buku,
             'penulis' => $penulis,
             'penerbit' => $penerbit,
             'kategori' => $kategori,
+            'peminjaman' => $peminjaman,
         ]);
 
     }
