@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Penerbit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
 
 class PenerbitController extends Controller
 {
@@ -116,5 +117,18 @@ class PenerbitController extends Controller
         Penerbit::destroy($penerbit->id);
 
         return redirect('/penerbit')->with('toast_success', 'Data Berhasil Dihapus!');
+    }
+
+ public function generatePDF()
+    {
+        $penerbit = Penerbit::get();
+  
+        $data = [
+            'penerbit' => $penerbit,
+        ]; 
+            
+        $pdf = PDF::loadView('pages.admin.penerbit.myPDF', $data);
+     
+        return $pdf->stream();
     }
 }

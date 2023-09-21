@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Penulis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
 
 class PenulisController extends Controller
 {
@@ -116,5 +117,18 @@ class PenulisController extends Controller
         Penulis::destroy($penulis->id);
 
         return redirect('/penulis')->with('toast_success', 'Data Berhasil Dihapus!');
+    }
+
+   public function generatePDF()
+    {
+        $penulis = Penulis::get();
+  
+        $data = [
+            'penulis' => $penulis,
+        ]; 
+            
+        $pdf = PDF::loadView('pages.admin.penulis.myPDF', $data);
+     
+        return $pdf->stream();
     }
 }

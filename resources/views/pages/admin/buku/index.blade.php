@@ -23,6 +23,20 @@
     </div>
     @endif
 
+<div class="card-body">
+    <div class="col-md-6">
+
+<form method="get" action="{{ route('buku_search') }}">
+        <form method="get" action="/search">
+    <div class="input-group">
+        <input type="search" class="form-control" name="search" placeholder="Search for...">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i> Filter
+         </button>
+    </div>
+</form>
+ </div>
+</div>
+                 
     <div class="card-body">
         <div style="margin-bottom: 20px">
             <a href="{{ route('buku_create') }}" class="btn btn-primary btn-flat">
@@ -31,10 +45,11 @@
             <a href="{{ url('export_data') }}" class="btn btn-success btn-flat">
                 <i class="fa fa-file-excel"></i> Export Excel
             </a>
-             <a href="{{ url('export') }}" class="btn btn-danger btn-flat">
+             <a href="{{ url('generate-pdf') }}" class="btn btn-danger btn-flat">
                 <i class="fa fa-file-pdf"></i> Export PDF
             </a>
         </div>
+
         <div style="overflow: auto">
             <table class="table table-bordered table-condensed">
                 <thead>

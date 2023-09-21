@@ -54,6 +54,7 @@ Route::get('/buku', [BukuController::class, 'index'])->name('buku_index');
 Route::get('/buku/create', [BukuController::class, 'create'])->name('buku_create');
 Route::post('/buku/store', [BukuController::class, 'store'])->name('buku_store');
 Route::get('/buku/show', [BukuController::class, 'show'])->name('buku_show');
+Route::get('/buku/search', [BukuController::class,'search'])->name('buku_search');
 
 
 Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku_edit');
@@ -61,6 +62,7 @@ Route::get('/buku/show/{id}', [BukuController::class, 'show'])->name('buku_show'
 Route::post('/buku/update/{buku}', [BukuController::class, 'update'])->name('buku_update');
 Route::post('/buku/destroy/{buku}', [BukuController::class, 'destroy'])->name('buku_destroy');
 
+Route::get('generate-pdf', [BukuController::class, 'generatePDF'])->name('generate-pdf');
 
 //KATEGORI
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori_index');
@@ -72,6 +74,9 @@ Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('ka
 Route::post('/kategori/update/{kategori}', [KategoriController::class, 'update'])->name('kategori_update');
 Route::post('/kategori/destroy/{kategori}', [KategoriController::class, 'destroy'])->name('kategori_destroy');
 
+Route::get('kategori-pdf', [KategoriController::class, 'generatePDF'])->name('kategori-pdf');
+
+
 //PEMINJAMAN
 Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminjaman_index');
 Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman_create');
@@ -82,6 +87,9 @@ Route::get('/peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name
 Route::get('/peminjaman/show/{id}', [PeminjamanController::class, 'show'])->name('peminjaman_show');
 Route::post('/peminjaman/update/{peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman_update');
 Route::post('/peminjaman/destroy/{peminjaman}', [PeminjamanController::class, 'destroy'])->name('peminjaman_destroy');
+
+Route::get('peminjaman-pdf', [PeminjamanController::class, 'generatePDF'])->name('peminjaman-pdf');
+
 
 
 //PENULIS
@@ -96,6 +104,9 @@ Route::get('/penulis/show/{id}', [PenulisController::class, 'show'])->name('penu
 Route::post('/penulis/update/{penulis}', [PenulisController::class, 'update'])->name('penulis_update');
 Route::post('/penulis/destroy/{penulis}', [PenulisController::class, 'destroy'])->name('penulis_destroy');
 
+Route::get('penulis-pdf', [PenulisController::class, 'generatePDF'])->name('penulis-pdf');
+
+
 
 //PENERBIT
 Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit_index');
@@ -108,6 +119,11 @@ Route::get('/penerbit/edit/{id}', [PenerbitController::class, 'edit'])->name('pe
 Route::get('/penerbit/show/{id}', [PenerbitController::class, 'show'])->name('penerbit_show');
 Route::post('/penerbit/update/{penerbit}', [PenerbitController::class, 'update'])->name('penerbit_update');
 Route::post('/penerbit/destroy/{penerbit}', [PenerbitController::class, 'destroy'])->name('penerbit_destroy');
+
+Route::get('penerbit-pdf', [PenerbitController::class, 'generatePDF'])->name('penerbit-pdf');
+
+
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])

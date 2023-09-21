@@ -31,7 +31,7 @@
             <a href="{{ url('export_data') }}" class="btn btn-success btn-flat">
                 <i class="fa fa-file-excel"></i> Export Excel
             </a>
-             <a href="{{ url('export') }}" class="btn btn-danger btn-flat">
+             <a href="{{ url('penulis-pdf') }}" class="btn btn-danger btn-flat">
                 <i class="fa fa-file-pdf"></i> Export PDF
             </a>
         </div>

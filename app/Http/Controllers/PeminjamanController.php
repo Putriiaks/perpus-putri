@@ -6,6 +6,9 @@ use App\Models\Peminjaman;
 use App\Models\Buku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
+
+
 
 class PeminjamanController extends Controller
 {
@@ -128,5 +131,18 @@ class PeminjamanController extends Controller
         Peminjaman::destroy($peminjaman->id);
 
         return redirect('/peminjaman')->with('toast_success', 'Data Berhasil Dihapus!');
+    }
+
+    public function generatePDF()
+    {
+        $peminjaman = Peminjaman::get();
+  
+        $data = [
+            'peminjaman' => $peminjaman,
+        ]; 
+            
+        $pdf = PDF::loadView('pages.admin.peminjaman.myPDF', $data);
+     
+        return $pdf->stream();
     }
 }
