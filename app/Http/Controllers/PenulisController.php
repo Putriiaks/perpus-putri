@@ -119,7 +119,7 @@ class PenulisController extends Controller
         return redirect('/penulis')->with('toast_success', 'Data Berhasil Dihapus!');
     }
 
-   public function generatePDF()
+public function generatePDF()
     {
         $penulis = Penulis::get();
   
@@ -130,5 +130,17 @@ class PenulisController extends Controller
         $pdf = PDF::loadView('pages.admin.penulis.myPDF', $data);
      
         return $pdf->stream();
+    }
+
+     public function search(Request $request) {
+        if($request->has('search')) {
+            $penulis = Penulis::where('alamat','LIKE','%'.$request->search.'%')->get();
+        }
+        else {
+            $penulis = Penulis::all();
+        }
+       return view('pages.admin.penulis.index', [
+            'penulis' => $penulis,
+        ]);
     }
 }

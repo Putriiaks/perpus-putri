@@ -145,4 +145,16 @@ class PeminjamanController extends Controller
      
         return $pdf->stream();
     }
+
+    public function search(Request $request) {
+        if($request->has('search')) {
+            $peminjaman = Peminjaman::where('tanggal_pinjam','LIKE','%'.$request->search.'%')->get();
+        }
+        else {
+            $peminjamanm = Peminjaman::all();
+        }
+       return view('pages.admin.peminjaman.index', [
+            'peminjaman' => $peminjaman,
+        ]);
+    }
 }

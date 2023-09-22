@@ -23,6 +23,20 @@
     </div>
     @endif
 
+<div class="card-body">
+    <div class="col-md-6">
+
+<form method="get" action="{{ route('penulis_search') }}">
+        <form method="get" action="/search">
+    <div class="input-group">
+        <input type="search" class="form-control" name="search" placeholder="Search for author address">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i> Filter
+         </button>
+    </div>
+</form>
+ </div>
+</div>
+
     <div class="card-body">
         <div style="margin-bottom: 20px">
             <a href="{{ route('penulis_create') }}" class="btn btn-primary btn-flat">

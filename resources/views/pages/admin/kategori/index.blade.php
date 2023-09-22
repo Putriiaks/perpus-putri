@@ -23,6 +23,20 @@
     </div>
     @endif
 
+<div class="card-body">
+    <div class="col-md-6">
+
+<form method="get" action="{{ route('kategori_search') }}">
+        <form method="get" action="/search">
+    <div class="input-group">
+        <input type="search" class="form-control" name="search" placeholder="Search for category name">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i> Filter
+         </button>
+    </div>
+</form>
+ </div>
+</div>
+
     <div class="card-body">
         <div style="margin-bottom: 20px">
             <a href="{{ route('kategori_create') }}" class="btn btn-primary btn-flat">
@@ -52,14 +66,16 @@
                         <td style="text-align:center">
                             <for action="" method="POST">
 
-                                <a class="btn btn-info" href="">Show</a>
+                                <a class="btn btn-info" href="">
+                                <i class="fas fa-fw fa-eye"></i></a>
+
 
                                 <a href="{{ route('kategori_edit', $k->id) }}" class="btn btn-warning">
                                     <i class="fas fa-fw fa-pencil"></i>
                                 </a>
                                 <form action="{{ route('kategori_destroy', $k->id) }}" method="post" class="d-inline">
                                 @csrf
-                                <button type="submit" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');" class="btn btn-danger">Delete</button>
+                                <button type="submit" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');" class="btn btn-danger"><i class="fas fa-fw  fa-trash"></i></button>
                             </form>
                             </td>
                         </tr>

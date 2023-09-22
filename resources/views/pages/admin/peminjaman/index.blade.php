@@ -24,6 +24,20 @@
     @endif
 
     <div class="card-body">
+    <div class="col-md-6">
+
+<form method="get" action="{{ route('peminjaman_search') }}">
+        <form method="get" action="/search">
+    <div class="input-group">
+        <input type="date" class="form-control" name="search" placeholder="Search for...">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-search fa-sm"></i> Filter
+         </button>
+    </div>
+</form>
+ </div>
+</div>
+
+    <div class="card-body">
         <div style="margin-bottom: 20px">
             <a href="{{ route('peminjaman_create') }}" class="btn btn-primary btn-flat">
                 <i class="fa fa-plus-circle"></i> Tambah Data

@@ -131,4 +131,16 @@ class PenerbitController extends Controller
      
         return $pdf->stream();
     }
+
+    public function search(Request $request) {
+        if($request->has('search')) {
+            $penerbit = Penerbit::where('email','LIKE','%'.$request->search.'%')->get();
+        }
+        else {
+            $penerbit = Penerbit::all();
+        }
+       return view('pages.admin.penerbit.index', [
+            'penerbit' => $penerbit,
+        ]);
+    }
 }

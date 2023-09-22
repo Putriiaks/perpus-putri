@@ -68,6 +68,7 @@ Route::get('generate-pdf', [BukuController::class, 'generatePDF'])->name('genera
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori_index');
 Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori_create');
 Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori_store');
+Route::get('/kategori/search', [KategoriController::class,'search'])->name('kategori_search');
 
 
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori_edit');
@@ -82,6 +83,7 @@ Route::get('/peminjaman', [PeminjamanController::class, 'index'])->name('peminja
 Route::get('/peminjaman/create', [PeminjamanController::class, 'create'])->name('peminjaman_create');
 Route::post('/peminjaman/store', [PeminjamanController::class, 'store'])->name('peminjaman_store');
 Route::get('/peminjaman/show', [PeminjamanController::class, 'show'])->name('peminjaman_show');
+Route::get('/peminjaman/search', [PeminjamanController::class,'search'])->name('peminjaman_search');
 
 Route::get('/peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name('peminjaman_edit');
 Route::get('/peminjaman/show/{id}', [PeminjamanController::class, 'show'])->name('peminjaman_show');
@@ -97,6 +99,8 @@ Route::get('/penulis', [PenulisController::class, 'index'])->name('penulis_index
 Route::get('/penulis/create', [PenulisController::class, 'create'])->name('penulis_create');
 Route::post('/penulis/store', [PenulisController::class, 'store'])->name('penulis_store');
 Route::get('/penulis/show', [PenulisController::class, 'show'])->name('penulis_show');
+Route::get('/penulis/search', [PenulisController::class,'search'])->name('penulis_search');
+
 
 
 Route::get('/penulis/edit/{id}', [PenulisController::class, 'edit'])->name('penulis_edit');
@@ -113,6 +117,7 @@ Route::get('/penerbit', [PenerbitController::class, 'index'])->name('penerbit_in
 Route::get('/penerbit/create', [PenerbitController::class, 'create'])->name('penerbit_create');
 Route::post('/penerbit/store', [PenerbitController::class, 'store'])->name('penerbit_store');
 Route::get('/penerbit/show', [PenerbitController::class, 'show'])->name('penerbit_show');
+Route::get('/penerbit/search', [PenerbitController::class,'search'])->name('penerbit_search');
 
 
 Route::get('/penerbit/edit/{id}', [PenerbitController::class, 'edit'])->name('penerbit_edit');
