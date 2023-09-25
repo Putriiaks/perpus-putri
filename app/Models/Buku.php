@@ -9,6 +9,8 @@ use App\Models\Penerbit;
 use App\Models\Penulis;
 
 
+
+
 class Buku extends Model
 {
 

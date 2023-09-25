@@ -11,6 +11,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\PenerbitController;
+use App\Http\Controllers\ExportController;
+
 
 
 
@@ -55,6 +57,8 @@ Route::get('/buku/create', [BukuController::class, 'create'])->name('buku_create
 Route::post('/buku/store', [BukuController::class, 'store'])->name('buku_store');
 Route::get('/buku/show', [BukuController::class, 'show'])->name('buku_show');
 Route::get('/buku/search', [BukuController::class,'search'])->name('buku_search');
+Route::get('/export-excel', [BukuController::class, 'exportToExcel'])->name('export-excel');
+
 
 
 Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku_edit');
@@ -126,9 +130,6 @@ Route::post('/penerbit/update/{penerbit}', [PenerbitController::class, 'update']
 Route::post('/penerbit/destroy/{penerbit}', [PenerbitController::class, 'destroy'])->name('penerbit_destroy');
 
 Route::get('penerbit-pdf', [PenerbitController::class, 'generatePDF'])->name('penerbit-pdf');
-
-
-
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
