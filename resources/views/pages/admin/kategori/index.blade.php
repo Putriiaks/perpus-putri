@@ -42,7 +42,7 @@
             <a href="{{ route('kategori_create') }}" class="btn btn-primary btn-flat">
                 <i class="fa fa-plus-circle"></i> Tambah Data
             </a>
-            <a href="{{ url('export_data') }}" class="btn btn-success btn-flat">
+            <a href="{{ url('kategori-excel') }}" class="btn btn-success btn-flat">
                 <i class="fa fa-file-excel"></i> Export Excel
             </a>
              <a href="{{ url('kategori-pdf') }}" class="btn btn-danger btn-flat">

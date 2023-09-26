@@ -7,6 +7,9 @@ use App\Models\Kategori;
 use App\Models\Penerbit;
 use App\Models\Penulis;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use PDF;
@@ -166,6 +169,60 @@ class BukuController extends Controller
      
         return $pdf->stream();
     }
+
+    public function excel()
+    {
+
+        // Buat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Isi data contoh ke lembar kerja
+        $sheet->setCellValue('A1', 'Nama Buku');
+        $sheet->setCellValue('C1', 'Tahun terbit');
+        $sheet->setCellValue('B1', 'Penulis');
+        $sheet->setCellValue('D1', 'Penerbit');
+        $sheet->setCellValue('E1', 'Kategori');
+        $sheet->setCellValue('F1', 'Sinopsis');
+        $sheet->setCellValue('G1', 'Jumlah');
+        $sheet->setCellValue('H1', 'Sampul');
+
+        $bukus = Buku::with('penulis')->get();
+        $bukus = Buku::with('penerbit')->get();
+        $bukus = Buku::with('kategori')->get();
+
+        $row = 2;
+       foreach ($bukus as $buku) {
+        $sheet->setCellValue('A' . $row, $buku->nama);
+        $sheet->setCellValue('B' . $row, $buku->tahun_terbit);
+        $sheet->setCellValue('C' . $row, $buku->penulis->nama);
+        $sheet->setCellValue('D' . $row, $buku->penerbit->nama);
+        $sheet->setCellValue('E' . $row, $buku->kategori->nama);
+        $sheet->setCellValue('F' . $row, $buku->sinopsis);
+        $sheet->setCellValue('G' . $row, $buku->jumlah);
+
+         // Ganti dengan path gambar penulis yang sesuai
+        $drawing = new Drawing();
+        $drawing->setName('Sampul');
+        $drawing->setDescription('Sampul Buku');
+        $drawing->setPath(public_path('storage/' . $buku->sampul));
+        $drawing->setCoordinates('H' . $row);
+        $drawing->setWidth(100); 
+        $drawing->setHeight(100); 
+        $drawing->setWorksheet($sheet);
+        $row++;
+    }
+
+        // Buat objek writer Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'buku.xlsx';
+        $writer->save($filename);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
+    }
+    
 
     public function search(Request $request) {
         if($request->has('search')) {

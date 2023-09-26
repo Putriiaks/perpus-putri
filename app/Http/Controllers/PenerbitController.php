@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Penerbit;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
 
@@ -130,6 +132,42 @@ class PenerbitController extends Controller
         $pdf = PDF::loadView('pages.admin.penerbit.myPDF', $data);
      
         return $pdf->stream();
+    }
+
+    public function excel()
+    {
+
+        // Buat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Isi data contoh ke lembar kerja
+        $sheet->setCellValue('A1', 'Nama Penerbit');
+        $sheet->setCellValue('B1', 'Alamat');
+        $sheet->setCellValue('C1', 'Telepon');
+        $sheet->setCellValue('D1', 'Email');
+     
+       $penerbit = Penerbit::all();
+
+        $row = 2;
+       foreach ($penerbit as $p) {
+        $sheet->setCellValue('A' . $row, $p->nama);
+        $sheet->setCellValue('B' . $row, $p->alamat);
+        $sheet->setCellValue('C' . $row, $p->telepon);
+        $sheet->setCellValue('D' . $row, $p->email);
+      
+
+        $row++;
+    }
+
+        // Buat objek writer Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'penerbit.xlsx';
+        $writer->save($filename);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
     }
 
     public function search(Request $request) {

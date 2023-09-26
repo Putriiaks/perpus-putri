@@ -89,7 +89,209 @@
 </div>
 </div>
 
+<div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        Grafik Buku Berdasarkan Penerbit
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                   <div id="penerbit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+<div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        Grafik Buku Berdasarkan Penulis
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                   <div id="penulis">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header bg-primary">
+                        Grafik Buku Berdasarkan Kategori
+                    </div>
+                    <div class="card-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                   <div id="kategori">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+Highcharts.chart('penerbit', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: 'Penerbit Buku'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: [
+            'Gramedia',
+            'Kompas',
+            'Alvi Ardhi Publishing',
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            useHTML: true,
+            text: 'Jumlah Buku'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Buku',
+        data: [15.93, 13.63, 18.73,]
+
+    }]
+});
+</script>
+
+<script>
+   Highcharts.chart('penulis', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Penulis Buku'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: [
+            'Ardhi Mohamad', 'Henry Manampiring', 'Arthur Conan Doyle'
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        title: {
+            useHTML: true,
+            text: 'Jumlah Buku'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Buku',
+        data: [15.93, 13.63, 18.73,]
+
+    }]
+});
+</script>
+
+<script>
+Highcharts.chart('kategori', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Kategori Buku'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    series: [{
+        name: 'kategori',
+        colorByPoint: true,
+        data:[ app\Models\Kategori::findarrayGrafikKategori();
+
+        {
+        name:'kategori 1',
+        y: 35.0
+      };
+      {
+        name:'kategori 2',
+        y: 45.0
+      },
+      {
+        name:'kategori 3',
+        y: 20.0
+      }
+      ]
+    }]
+});
+</script>
 
 
 @endsection

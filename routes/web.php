@@ -11,7 +11,6 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\PenerbitController;
-use App\Http\Controllers\ExportController;
 
 
 
@@ -57,16 +56,14 @@ Route::get('/buku/create', [BukuController::class, 'create'])->name('buku_create
 Route::post('/buku/store', [BukuController::class, 'store'])->name('buku_store');
 Route::get('/buku/show', [BukuController::class, 'show'])->name('buku_show');
 Route::get('/buku/search', [BukuController::class,'search'])->name('buku_search');
-Route::get('/export-excel', [BukuController::class, 'exportToExcel'])->name('export-excel');
-
-
 
 Route::get('/buku/edit/{id}', [BukuController::class, 'edit'])->name('buku_edit');
 Route::get('/buku/show/{id}', [BukuController::class, 'show'])->name('buku_show');
 Route::post('/buku/update/{buku}', [BukuController::class, 'update'])->name('buku_update');
 Route::post('/buku/destroy/{buku}', [BukuController::class, 'destroy'])->name('buku_destroy');
-
 Route::get('generate-pdf', [BukuController::class, 'generatePDF'])->name('generate-pdf');
+Route::get('export-excel', [BukuController::class, 'excel'])->name('export-excel');
+
 
 //KATEGORI
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori_index');
@@ -74,12 +71,12 @@ Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kat
 Route::post('/kategori/store', [KategoriController::class, 'store'])->name('kategori_store');
 Route::get('/kategori/search', [KategoriController::class,'search'])->name('kategori_search');
 
-
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori_edit');
 Route::post('/kategori/update/{kategori}', [KategoriController::class, 'update'])->name('kategori_update');
 Route::post('/kategori/destroy/{kategori}', [KategoriController::class, 'destroy'])->name('kategori_destroy');
-
 Route::get('kategori-pdf', [KategoriController::class, 'generatePDF'])->name('kategori-pdf');
+Route::get('kategori-excel', [KategoriController::class, 'excel'])->name('kategori-excel');
+
 
 
 //PEMINJAMAN
@@ -93,8 +90,8 @@ Route::get('/peminjaman/edit/{id}', [PeminjamanController::class, 'edit'])->name
 Route::get('/peminjaman/show/{id}', [PeminjamanController::class, 'show'])->name('peminjaman_show');
 Route::post('/peminjaman/update/{peminjaman}', [PeminjamanController::class, 'update'])->name('peminjaman_update');
 Route::post('/peminjaman/destroy/{peminjaman}', [PeminjamanController::class, 'destroy'])->name('peminjaman_destroy');
-
 Route::get('peminjaman-pdf', [PeminjamanController::class, 'generatePDF'])->name('peminjaman-pdf');
+Route::get('peminjaman-excel', [PeminjamanController::class, 'excel'])->name('peminjaman-excel');
 
 
 
@@ -105,14 +102,12 @@ Route::post('/penulis/store', [PenulisController::class, 'store'])->name('penuli
 Route::get('/penulis/show', [PenulisController::class, 'show'])->name('penulis_show');
 Route::get('/penulis/search', [PenulisController::class,'search'])->name('penulis_search');
 
-
-
 Route::get('/penulis/edit/{id}', [PenulisController::class, 'edit'])->name('penulis_edit');
 Route::get('/penulis/show/{id}', [PenulisController::class, 'show'])->name('penulis_show');
 Route::post('/penulis/update/{penulis}', [PenulisController::class, 'update'])->name('penulis_update');
 Route::post('/penulis/destroy/{penulis}', [PenulisController::class, 'destroy'])->name('penulis_destroy');
-
 Route::get('penulis-pdf', [PenulisController::class, 'generatePDF'])->name('penulis-pdf');
+Route::get('penulis-excel', [PenulisController::class, 'excel'])->name('penulis-excel');
 
 
 
@@ -123,13 +118,12 @@ Route::post('/penerbit/store', [PenerbitController::class, 'store'])->name('pene
 Route::get('/penerbit/show', [PenerbitController::class, 'show'])->name('penerbit_show');
 Route::get('/penerbit/search', [PenerbitController::class,'search'])->name('penerbit_search');
 
-
 Route::get('/penerbit/edit/{id}', [PenerbitController::class, 'edit'])->name('penerbit_edit');
 Route::get('/penerbit/show/{id}', [PenerbitController::class, 'show'])->name('penerbit_show');
 Route::post('/penerbit/update/{penerbit}', [PenerbitController::class, 'update'])->name('penerbit_update');
 Route::post('/penerbit/destroy/{penerbit}', [PenerbitController::class, 'destroy'])->name('penerbit_destroy');
-
 Route::get('penerbit-pdf', [PenerbitController::class, 'generatePDF'])->name('penerbit-pdf');
+Route::get('penerbit-excel', [PenerbitController::class, 'excel'])->name('penerbit-excel');
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])

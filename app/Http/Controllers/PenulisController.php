@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Penulis;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
 
@@ -130,6 +132,42 @@ public function generatePDF()
         $pdf = PDF::loadView('pages.admin.penulis.myPDF', $data);
      
         return $pdf->stream();
+    }
+
+    public function excel()
+    {
+
+        // Buat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Isi data contoh ke lembar kerja
+        $sheet->setCellValue('A1', 'Nama Penulis');
+        $sheet->setCellValue('B1', 'Alamat');
+        $sheet->setCellValue('C1', 'Telepon');
+        $sheet->setCellValue('D1', 'Email');
+     
+       $penulis = Penulis::all();
+
+        $row = 2;
+       foreach ($penulis as $pen) {
+        $sheet->setCellValue('A' . $row, $pen->nama);
+        $sheet->setCellValue('B' . $row, $pen->alamat);
+        $sheet->setCellValue('C' . $row, $pen->telepon);
+        $sheet->setCellValue('D' . $row, $pen->email);
+      
+
+        $row++;
+    }
+
+        // Buat objek writer Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'penulis.xlsx';
+        $writer->save($filename);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
     }
 
      public function search(Request $request) {

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
 
@@ -111,6 +113,34 @@ class KategoriController extends Controller
         $pdf = PDF::loadView('pages.admin.kategori.myPDF', $data);
      
         return $pdf->stream();
+    }
+
+    public function excel()
+    {
+
+        // Buat objek Spreadsheet
+        $spreadsheet = new Spreadsheet();
+
+        // Buat lembar kerja aktif
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Isi data contoh ke lembar kerja
+        $sheet->setCellValue('A1', 'Nama Kategori');
+       
+       $kategori = Kategori::all();
+
+        $row = 2;
+       foreach ($kategori as $k) {
+        $sheet->setCellValue('A' . $row, $k->nama);
+        $row++;
+    }
+
+        // Buat objek writer Excel
+        $writer = new Xlsx($spreadsheet);
+        $filename = 'kategori.xlsx';
+        $writer->save($filename);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
     }
 
     public function search(Request $request) {
