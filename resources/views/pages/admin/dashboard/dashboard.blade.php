@@ -274,21 +274,7 @@ Highcharts.chart('kategori', {
     series: [{
         name: 'kategori',
         colorByPoint: true,
-        data:[ app\Models\Kategori::findarrayGrafikKategori();
-
-        {
-        name:'kategori 1',
-        y: 35.0
-      };
-      {
-        name:'kategori 2',
-        y: 45.0
-      },
-      {
-        name:'kategori 3',
-        y: 20.0
-      }
-      ]
+        data: app\Models\Kategori::findarrayGrafikKategori();
     }]
 });
 </script>

@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $query =  Penerbit::query();
         $penerbit =  $query->count();
  
-        $query =  Kategori::query();
+        $data = Kategori::findarrayGrafikKategori();
         $kategori =  $query->count();
 
         $query =  Peminjaman::query();
