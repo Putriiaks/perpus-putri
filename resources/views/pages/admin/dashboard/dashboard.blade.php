@@ -163,9 +163,11 @@ Highcharts.chart('penerbit', {
     },
     xAxis: {
         categories: [
-            'Gramedia',
-            'Kompas',
-            'Alvi Ardhi Publishing',
+            'Lentera Dipantara',
+            'Gramedia Pustaka Utama',
+            'PT Kompas Media Nusantara',
+            'Bukunesia',
+
         ],
         crosshair: true
     },
@@ -191,7 +193,7 @@ Highcharts.chart('penerbit', {
     },
     series: [{
         name: 'Buku',
-        data: [15.93, 13.63, 18.73,]
+        data: [15.93, 13.63, 18.73, 15.18]
 
     }]
 });
@@ -210,7 +212,7 @@ Highcharts.chart('penerbit', {
     },
     xAxis: {
         categories: [
-            'Ardhi Mohamad', 'Henry Manampiring', 'Arthur Conan Doyle'
+            'Henry Manampiring', 'Eka Kurniawan', 'Pramoedya Ananta Toer', 'Tere Liye'
         ],
         crosshair: true
     },
@@ -236,7 +238,7 @@ Highcharts.chart('penerbit', {
     },
     series: [{
         name: 'Buku',
-        data: [15.93, 13.63, 18.73,]
+        data: [15.93, 13.63, 18.73, 15.00]
 
     }]
 });
@@ -245,37 +247,71 @@ Highcharts.chart('penerbit', {
 <script>
 Highcharts.chart('kategori', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
         type: 'pie'
     },
     title: {
-        text: 'Kategori Buku'
+        text: 'Kategori',
     },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-    },
+    
+
     accessibility: {
+        announceNewData: {
+            enabled: true
+        },
         point: {
             valueSuffix: '%'
         }
     },
+
     plotOptions: {
-        pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
+        series: {
+            borderRadius: 5,
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '{point.name}: {point.y:.1f}%'
             }
         }
     },
-    series: [{
-        name: 'kategori',
-        colorByPoint: true,
-        data: app\Models\Kategori::findarrayGrafikKategori();
-    }]
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    series: [
+        {
+            name: 'Browsers',
+            colorByPoint: true,
+            data: [
+                {
+                    name: 'Drama',
+                    y: 50.04,
+                    drilldown: 'Drama'
+                },
+                {
+                    name: 'Fiksi',
+                    y: 30.47,
+                    drilldown: 'Fiksi'
+                },
+                {
+                    name: 'Fiksi Sejarah',
+                    y: 20.32,
+                    drilldown: 'Fiksi Sejarah'
+                },
+                {
+                    name: 'Self Improvement',
+                    y: 20.15,
+                    drilldown: 'Self Improvement'
+                },
+                {
+                    name: 'Other',
+                    y: 11.02,
+                    drilldown: null
+                }
+            ]
+        }
+    ],
+    
 });
 </script>
 

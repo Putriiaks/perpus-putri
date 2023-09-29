@@ -11,6 +11,11 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\PenerbitController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AnggotaController;
+
+
 
 
 
@@ -124,6 +129,36 @@ Route::post('/penerbit/update/{penerbit}', [PenerbitController::class, 'update']
 Route::post('/penerbit/destroy/{penerbit}', [PenerbitController::class, 'destroy'])->name('penerbit_destroy');
 Route::get('penerbit-pdf', [PenerbitController::class, 'generatePDF'])->name('penerbit-pdf');
 Route::get('penerbit-excel', [PenerbitController::class, 'excel'])->name('penerbit-excel');
+
+//ADMIN
+Route::get('/admin', [AdminController::class, 'index'])->name('admin_index');
+
+//ROLE
+Route::get('/role', [RoleController::class, 'index'])->name('role_index');
+
+//ANGGOTA
+Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota_index');
+Route::get('/anggota/create', [AnggotaController::class, 'create'])->name('anggota_create');
+Route::post('/anggota/store', [AnggotaController::class, 'store'])->name('anggota_store');
+Route::get('/anggota/show', [AnggotaController::class, 'show'])->name('anggota_show');
+
+Route::get('/anggota/edit/{id}', [AnggotaController::class, 'edit'])->name('anggota_edit');
+Route::get('/anggota/show/{id}', [AnggotaController::class, 'show'])->name('anggota_show');
+Route::post('/anggota/update/{anggota}', [AnggotaController::class, 'update'])->name('anggota_update');
+Route::post('/anggota/destroy/{anggota}', [AnggotaController::class, 'destroy'])->name('anggota_destroy');
+
+//SEMUA
+Route::get('/semua', [SemuaController::class, 'index'])->name('semua_index');
+Route::get('/semua/create', [SemuaController::class, 'create'])->name('semua_create');
+Route::post('/semua/store', [SemuaController::class, 'store'])->name('semua_store');
+Route::get('/semua/show', [SemuaController::class, 'show'])->name('semua_show');
+
+Route::get('/semua/edit/{id}', [SemuaController::class, 'edit'])->name('semua_edit');
+Route::get('/semua/show/{id}', [SemuaController::class, 'show'])->name('semua_show');
+Route::post('/semua/update/{semua}', [SemuaController::class, 'update'])->name('semua_update');
+Route::post('/semua/destroy/{semua}', [SemuaController::class, 'destroy'])->name('semua_destroy');
+
+
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])
