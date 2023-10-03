@@ -26,6 +26,16 @@ class PeminjamanController extends Controller
         ]);
     }
 
+
+    public function index_anggota()
+    {
+       $peminjaman = Peminjaman::all();
+
+        return view('pages.admin.peminjaman.index_anggota', [
+            'peminjamans' => $peminjaman,
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

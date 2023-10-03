@@ -22,6 +22,14 @@ class PenulisController extends Controller
         ]);
     }
 
+     public function index_anggota()
+    {
+        return view('pages.admin.penulis.index_anggota', [
+            'title' => 'Penulis',
+            'penul' => Penulis::all(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -181,4 +189,5 @@ public function generatePDF()
             'penulis' => $penulis,
         ]);
     }
+
 }

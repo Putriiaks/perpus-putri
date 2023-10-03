@@ -28,8 +28,8 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="{{ url('/dashboard') }}" class="nav-link active">
-              <i class="fa fa-tachometer" aria-hidden="true"></i>
+            <a href="{{ url('/dashboard') }}" class="nav-link {{ Request::is('dashboard') ? 'active':''}}">
+              <i class="fas fa-fw fas fa-tachometer-alt" aria-hidden="true"></i>
               <p>
                 Dashboard
               </p>
@@ -37,8 +37,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('/buku') }}" class="nav-link">
-              <i class="fa-solid fa-book"></i>
+            <a href="{{ url('/buku') }}" class="nav-link {{ Request::is('buku') ? 'active':''}}">
+              <i class="fas fa-fw fa-book"></i>
               <p>
                 Data Buku
                 <span class="right badge badge-danger"></span>
@@ -47,8 +47,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('penulis_index') }}" class="nav-link">
-              <i class="fa fa-pencil-alt"></i>
+            <a href="{{ route('penulis_index') }}" class="nav-link {{ Request::is('penulis') ? 'active':''}}">
+              <i class="fas fa-fw fa-pencil-alt"></i>
               <p>
                 Penulis
                 <span class="right badge badge-danger"></span>
@@ -57,8 +57,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('penerbit_index') }}" class="nav-link">
-              <i class="fa fa-building"></i>
+            <a href="{{ route('penerbit_index') }}" class="nav-link {{ Request::is('penerbit') ? 'active':''}}">
+              <i class="fas fa-fw fa-building"></i>
               <p>
                   Penerbit
                 <span class="badge badge-info right"></span>
@@ -67,8 +67,8 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ route('kategori_index') }}" class="nav-link">
-              <i class="ion ion-pie-graph"></i>
+            <a href="{{ route('kategori_index') }}" class="nav-link {{ Request::is('kategori') ? 'active':''}}">
+              <i class="fas fa-fw fa-tags"></i>
               <p>
                 Kategori
               </p>
@@ -76,10 +76,10 @@
           </li>
             
           <li class="nav-item">
-            <a href="{{ route('peminjaman_index') }}" class="nav-link">
-              <i class="fa-solid fa-bookmark"></i>
+            <a href="{{ route('peminjaman_index') }}" class="nav-link {{ Request::is('peminjaman') ? 'active':''}}">
+              <i class="fas fa-fw fa-hand-holding-dollar"></i>
               <p>
-                Peminjam
+                Peminjaman
               </p>
             </a>
           </li>
@@ -88,28 +88,28 @@
           <li class="nav-header">SISTEM</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="fa-solid fa-users"></i>
+              <i class="fas fa-fw fa-solid fa-users"></i>
               <p>
                 User
-                <i class="fas fa-angle-left right"></i>
+                <i class="fas fa-fw fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
                <li class="nav-item">
                 <a href="{{ route('semua_index') }}" class="nav-link">
-                  <i class="fa-solid fa-list"></i>
+                  <i class="fas fa-fw fa-solid fa-list"></i>
                   <p>Semua</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('admin_index') }}" class="nav-link">
-                  <i class="fa-regular fa-keyboard"></i>
+                  <i class="fas fa-fw fa-regular fa-keyboard"></i>
                   <p>Admin</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('anggota_index') }}" class="nav-link">
-                  <i class="fa-solid fa-user"></i>  
+                  <i class="fas fa-fw fa-solid fa-user"></i>  
                   <p>Anggota</p>
                 </a>
               </li>
@@ -117,7 +117,7 @@
           </li>
           <li class="nav-item">
             <a href="pages/kanban.html" class="nav-link">
-              <i class="fa-solid fa-lock"></i>
+              <i class="fas fa-fw fa-solid fa-lock"></i>
               <p>
                 Ganti Password
               </p>
@@ -125,12 +125,19 @@
           </li>
           <li class="nav-item">
             <a href="{{url('/login')}}" class="nav-link">
-              <i class="fa-solid fa-lock"></i>
+              <i class="fas fa-fw fa-solid fa-lock"></i>
               <p>
                 Login
               </p>
             </a>
           </li>
+          <li class="nav-item"> 
+        <a href="{{ url('/actionlogout') }}" class="nav-link"> 
+          <i class="fas fa-fw fa-right-from-bracket"></i> 
+          <p>Logout</p> 
+      </a> 
+  </li>
+
           
       </nav>
     </div>

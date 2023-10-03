@@ -39,9 +39,6 @@
                  
     <div class="card-body">
         <div style="margin-bottom: 20px">
-            <a href="{{ route('buku_create') }}" class="btn btn-primary btn-flat">
-                <i class="fa fa-plus-circle"></i> Tambah Data Buku
-            </a>
             <a href="{{ url('export-excel') }}" class="btn btn-success btn-flat">
                 <i class="fa fa-file-excel"></i> Export Excel
             </a>
@@ -63,10 +60,10 @@
                         <th width="200px" style="text-align: center;">Sinopsis</th>
                         <th style="text-align:center;">Jumlah</th>
                         <th style="text-align:center;">Sampul</th>
-                        <th width="250px" style="text-align: center;">Action</th>
+                        <th style="text-align:center;">Action</th>
                     </tr>
                 </thead>
-                @foreach($buku as $buku)
+                @foreach($bukus as $buku)
                 <tbody>
                     <tr>
                         <td style="text-align:center">{{ $loop->iteration }}</td>
@@ -84,14 +81,6 @@
                                 <i class="fas fa-fw fa-eye"></i>
                             </a>
 
-                            <a href="{{ route('buku_edit', $buku->id) }}" class="btn btn-warning">
-                                <i class="fas fa-fw fa-pencil"></i>
-                            </a>
-
-                            <form action="{{ route('buku_destroy', $buku->id) }}" method="post" class="d-inline">
-                                @csrf
-                               <button type="submit" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini?');" class="btn btn-danger" ><i class="fas fa-fw  fa-trash"></i></button>
-                            </form>
                         </td>
                     </tr>
                 </tbody>

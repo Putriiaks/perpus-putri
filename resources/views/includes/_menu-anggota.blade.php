@@ -37,7 +37,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('buku') }}" class="nav-link {{ Request::is('buku') ? 'active':''}}">
+            <a href="{{ url('buku_anggota') }}" class="nav-link {{ Request::is('buku_anggota') ? 'active':''}}">
               <i class="fa-solid fa-book"></i>
               <p>
                 Data Buku
@@ -47,7 +47,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('penulis') }}" class="nav-link {{ Request::is('penulis') ? 'active':''}}">
+            <a href="{{ url('penulis_anggota') }}" class="nav-link {{ Request::is('penulis_anggota') ? 'active':''}}">
               <i class="fa fa-pencil-alt"></i>
               <p>
                 Penulis
@@ -57,7 +57,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('penerbit') }}" class="nav-link {{ Request::is('Penerbit') ? 'active':''}}">
+            <a href="{{ url('penerbit_anggota') }}" class="nav-link {{ Request::is('penerbit_anggota') ? 'active':''}}">
               <i class="fa fa-building"></i>
               <p>
                   Penerbit
@@ -67,7 +67,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{ url('kategori') }}" class="nav-link {{ Request::is('Kategori') ? 'active':''}}">
+            <a href="{{ url('kategori_anggota') }}" class="nav-link {{ Request::is('kategori_anggota') ? 'active':''}}">
               <i class="ion ion-pie-graph"></i>
               <p>
                 Kategori
@@ -76,10 +76,10 @@
           </li>
             
           <li class="nav-item">
-            <a href="{{ route('peminjaman.index') }}" class="nav-link {{ Request::is('peminjaman.index') ? 'active':''}}">
+            <a href="{{ url('peminjaman_anggota') }}" class="nav-link {{ Request::is('peminjaman_anggota') ? 'active':''}}">
               <i class="fa-solid fa-bookmark"></i>
               <p>
-                Peminjam
+                Peminjaman
               </p>
             </a>
           </li>
@@ -92,7 +92,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('/login')}}" class="nav-link">
+            <a href="{{url('/actionlogout')}}" class="nav-link">
               <i class="fa-solid fa-lock"></i>
               <p>
                 Logout

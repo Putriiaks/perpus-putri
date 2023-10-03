@@ -22,6 +22,14 @@ class PenerbitController extends Controller
         ]);
     }
 
+    public function index_anggota()
+    {
+        return view('pages.admin.penerbit.index_anggota', [
+            'title' => 'Penerbit',
+            'penerbits' => Penerbit::all(),
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
